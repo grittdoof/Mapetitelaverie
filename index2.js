@@ -655,10 +655,19 @@ async function submitForm(e) {
     }
 
     try {
-        const response = await fetch('submit-form.php', {
+        // Convert FormData to JSON object for Vercel serverless function
+        const formDataObj = {};
+        for (const [key, value] of formData.entries()) {
+            formDataObj[key] = value;
+        }
+
+        const response = await fetch('/api/submit-form', {
             method: 'POST',
-            body: formData,
-            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify(formDataObj)
         });
 
         const result = await response.json();

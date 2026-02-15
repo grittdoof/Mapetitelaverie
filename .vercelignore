@@ -1,0 +1,24 @@
+# Fichiers PHP (non utilisés sur Vercel)
+*.php
+vendor/
+composer.json
+composer.lock
+
+# Logs locaux
+logs/
+*.log
+
+# Configuration Apache
+.htaccess
+
+# Fichiers sensibles
+.env
+.env.local
+
+# Cache et temp
+.DS_Store
+node_modules/
+
+# Fichiers Git
+.git/
+.gitignore

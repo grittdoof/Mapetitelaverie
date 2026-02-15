@@ -169,14 +169,52 @@
                 </div>
             </div>
 
-            <!-- Colonne de droite - Image avec effet smooth et animation -->
-            <div class="hidden lg:block animate-fade-in" style="animation-delay: 0.3s;">
-                <div class="relative group">
-                    <img
-                        src="./images/croquis kiosque perspective - Moyenne.png"
-                        alt="Bungalow automatique Ma Petite Laverie"
-                        class="w-4/5 h-auto rounded-2xl transition-all duration-700 ease-out group-hover:scale-105 opacity-60"
-                    >
+            <!-- Colonne de droite - Carrousel photo avec défilement automatique -->
+            <div class="animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="relative w-full md:w-4/5 lg:w-3/4 mx-auto overflow-hidden rounded-2xl">
+                    <!-- Conteneur du carrousel avec ratio 16/9 -->
+                    <div id="carousel" class="relative aspect-video">
+                        <!-- Image 1 -->
+                        <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
+                            <img
+                                src="./images/carrousel/laverie-automatique-modern-wood-facade-small.jpg"
+                                alt="Laverie automatique façade bois moderne"
+                                class="w-full h-full object-cover rounded-2xl"
+                            >
+                        </div>
+                        <!-- Image 2 -->
+                        <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                            <img
+                                src="./images/carrousel/laverie-oceanides-bord-de-mer-exterieur.jpg"
+                                alt="Laverie Océanides en bord de mer"
+                                class="w-full h-full object-cover rounded-2xl"
+                            >
+                        </div>
+                        <!-- Image 3 -->
+                        <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                            <img
+                                src="./images/carrousel/laverie-automatique-bois-design-exterieur.jpg"
+                                alt="Laverie automatique design bois extérieur"
+                                class="w-full h-full object-cover rounded-2xl"
+                            >
+                        </div>
+                        <!-- Image 4 -->
+                        <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                            <img
+                                src="./images/carrousel/kiosque-laverie-u-supermarche-exterieur.jpg"
+                                alt="Kiosque laverie supermarché U"
+                                class="w-full h-full object-cover rounded-2xl"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Indicateurs de navigation -->
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/80 hover:bg-white transition-all duration-300" data-index="0"></button>
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300" data-index="1"></button>
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300" data-index="2"></button>
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300" data-index="3"></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1180,5 +1218,67 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="index2.js"></script>
+
+    <!-- Script Carrousel -->
+    <script>
+        // Carrousel automatique
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+
+        // Fonction pour afficher une slide spécifique
+        function showSlide(index) {
+            // Masquer toutes les slides
+            slides.forEach(slide => {
+                slide.style.opacity = '0';
+            });
+
+            // Réinitialiser tous les dots
+            dots.forEach(dot => {
+                dot.classList.remove('bg-white/80');
+                dot.classList.add('bg-white/40');
+            });
+
+            // Afficher la slide courante
+            slides[index].style.opacity = '100';
+
+            // Activer le dot correspondant
+            dots[index].classList.remove('bg-white/40');
+            dots[index].classList.add('bg-white/80');
+        }
+
+        // Fonction pour passer à la slide suivante
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Défilement automatique toutes les 4 secondes
+        let autoSlide = setInterval(nextSlide, 4000);
+
+        // Gestion du clic sur les dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+                // Réinitialiser le timer auto
+                clearInterval(autoSlide);
+                autoSlide = setInterval(nextSlide, 4000);
+            });
+        });
+
+        // Pause au survol (uniquement desktop)
+        const carousel = document.getElementById('carousel');
+        if (window.innerWidth > 768) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(nextSlide, 4000);
+            });
+        }
+    </script>
 </body>
 </html>
