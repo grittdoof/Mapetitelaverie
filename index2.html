@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Petite Laverie Premium - Votre Kiosque Laverie Clé en Main</title>
+    <meta name="description" content="Investissement laverie automatique 100% français. SAV premium, 30 ans d'expertise, ROI rapide. Devis gratuit sous 24h.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/ma-petite-laverie-logo.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles2.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+        function trackEvent(eventName, eventParams = {}) {
+            gtag('event', eventName, eventParams);
+        }
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#0b5ed7', 600: '#0a4fb8', 700: '#083d91', 800: '#062d6b', 900: '#051e47' },
+                        accent: { 500: '#e6f2ff', 600: '#cde5ff' }
+                    },
+                    fontFamily: {
+                        display: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased bg-white">
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 bg-white border-t-4 border-primary-500 shadow-2xl p-6 z-[9999]">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex-1">
+                <h3 class="text-lg font-bold mb-2">🍪 Cookies</h3>
+                <p class="text-sm text-gray-700">Nous utilisons des cookies. <a href="mentions-legales.html" class="text-primary-500 underline">En savoir plus</a></p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="acceptCookies()" class="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 font-semibold">Accepter</button>
+                <button onclick="refuseCookies()" class="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 font-semibold">Refuser</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                  <div class="flex items-center gap-3">
+                    <a href="#" class="flex items-center space-x-3"></a>
+                        <img src="./images/ma-petite-laverie-logo.png" alt="Ma Petite Laverie Logo" class="h-12 w-12">
+                        <span class="text-gray-700 hover:text-primary-500 text-base md:text-2xl lg:text-3xl font-bold text-primary transition-colors">Ma Petite Laverie</span>
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="text-gray-700 hover:text-primary-500 font-medium transition-colors">Accueil</a>
+                    <a href="#solutions" class="text-gray-700 hover:text-primary-500 font-medium transition-colors">Nos solutions</a>
+                    <a href="#temoignages" class="text-gray-700 hover:text-primary-500 font-medium transition-colors">Avis clients</a>
+                    <a href="#faq" class="text-gray-700 hover:text-primary-500 font-medium transition-colors">FAQ</a>
+                    <a href="#formulaire" class="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5">
+                        Devis gratuit
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6 text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+        <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-white shadow-2xl z-[60] p-6">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="p-2 rounded-lg hover:bg-gray-100">
+                <i data-lucide="x" class="w-6 h-6 text-gray-700"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-4">
+            <a href="#hero" class="text-gray-700 hover:text-primary-500 font-medium transition-colors text-lg">Accueil</a>
+            <a href="#solutions" class="text-gray-700 hover:text-primary-500 font-medium transition-colors text-lg">Nos solutions</a>
+            <a href="#pourquoi-choisir" class="text-gray-700 hover:text-primary-500 font-medium transition-colors text-lg">Pourquoi nous choisir ?</a>
+            <a href="#processus" class="text-gray-700 hover:text-primary-500 font-medium transition-colors text-lg">Votre projet en 5 étapes</a>
+            <a href="#temoignages" class="text-gray-700 hover:text-primary-500 font-medium transition-colors text-lg">Avis clients</a>
+            <a href="#faq" class="text-gray-700 hover:text-primary-500 font-medium transition-colors text-lg">FAQ</a>
+            <a href="#formulaire" class="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300 text-center mt-4">
+                Devis gratuit
+            </a>
+                </div>
+    </div>
+   
+
+
+<!-- Hero Section + Formulaire -->
+<section id="hero" class="relative min-h-[70vh] bg-gradient-to-br from-blue-50 via-white to-blue-100 text-gray-900 overflow-hidden">
+    <!-- Vidéo en arrière-plan -->
+    <div class="absolute inset-0">
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-cover"
+            poster="./images/eau-bleue-ocean-underwater-view.jpg">
+            <source src="./Water_Splash_Ripple.mp4" type="video/mp4">
+        </video>
+    </div>
+    <!-- Dégradé bleu clair par-dessus -->
+    <div class="absolute inset-0 bg-gradient-to-br from-white/80 via-blue-50/70 to-blue-100/90"></div>
+    <!-- Effets de lumière -->
+    <div class="absolute top-20 left-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-20 right-10 w-[500px] h-[500px] bg-blue-300/15 rounded-full blur-3xl animate-float" style="animation-delay: 1.5s;"></div>
+
+    <div class="relative container mx-auto px-4 lg:px-8 py-24 lg:py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            <!-- Colonne de gauche - Contenu texte -->
+            <div>
+                
+                <!-- Titre Principal -->
+                <h1 class="text-2xl lg:text-4xl xl:text-5xl font-display font-bold leading-[1.1] mb-8 animate-fade-in-up text-gray-900">
+                    Votre Kiosque Laverie
+                    <span class="block text-primary-600 mt-3">Clé en Main</span>
+                </h1>
+
+                <!-- Description -->
+                <p class="text-xl text-gray-700 leading-relaxed mb-12 animate-fade-in-up font-light" style="animation-delay: 0.1s;">
+                    Solutions de laverie automatique haut de gamme, conçues et fabriquées en France.
+                    Investissement rentable, accompagnement premium, expertise reconnue depuis 1994.
+                </p>
+                <!-- Badge Premium -->
+                <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-white/80 backdrop-blur-md rounded-full border border-primary-200 mb-2 animate-fade-in shadow-sm">
+                    <span class="w-1.5 h-1.5 bg-accent-500 rounded-full animate-pulse"></span>
+                    <span class="text-sm font-medium tracking-wide text-gray-900">30 ans d'expertise</span>
+                </div>
+                <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-white/80 backdrop-blur-md rounded-full border border-primary-200 mb-2 animate-fade-in shadow-sm">
+                    <span class="w-1.5 h-1.5 bg-accent-500 rounded-full animate-pulse"></span>
+                    <span class="text-sm font-medium tracking-wide text-gray-900">Fabrication française</span>
+                </div>
+            </div>
+
+            <!-- Colonne de droite - Image avec effet smooth et animation -->
+            <div class="hidden lg:block animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="relative group">
+                    <img
+                        src="./images/croquis kiosque perspective - Moyenne.png"
+                        alt="Bungalow automatique Ma Petite Laverie"
+                        class="w-4/5 h-auto rounded-2xl transition-all duration-700 ease-out group-hover:scale-105 opacity-60"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Avantages avec icônes Lucide - 3 colonnes alignées -->
+        <div class="relative container mx-auto max-w-7xl mt-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <!-- SAV Premium -->
+                <div class="group flex items-start gap-4 p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-primary-200 hover:bg-white/90 hover:border-primary-300 hover:shadow-lg transition-all duration-300">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1.5 text-gray-900">SAV Premium</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Intervention 7/7 · Stock permanent · Assistance prioritaire</p>
+                    </div>
+                </div>
+
+                <!-- Certifiées A+++ -->
+                <div class="group flex items-start gap-4 p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-green-200 hover:bg-white/90 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="sprout" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1.5 text-gray-900">Économies garanties</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Nos machines sont certifiées A+++ pour une éfficacité énergétique maximale</p>
+                    </div>
+                </div>
+
+                <!-- ROI Rapide -->
+                <div class="group flex items-start gap-4 p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-accent-200 hover:bg-white/90 hover:border-accent-300 hover:shadow-lg transition-all duration-300">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-primary-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1.5 text-gray-900">ROI Rapide</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Rentabilité dès 30€/jour · Retour sur investissement optimisé</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Formulaire -->
+<section class="-mt-20 pb-20 bg-gradient-to-b from-transparent via-gray-50 to-white relative z-10">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <div class="animate-fade-in-up">
+                <div id="formulaire" class="relative rounded-3xl p-10 lg:p-12 shadow-2xl border border-gray-100 bg-white overflow-hidden">
+                    <!-- Subtle Background Pattern -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary-50 to-transparent rounded-full blur-3xl opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent-50 to-transparent rounded-full blur-3xl opacity-40"></div>
+
+                    <div class="relative">
+                        <div class="mb-10 text-center">
+                            <div class="inline-flex items-center gap-2.5 px-4 py-2 bg-primary-50 rounded-full mb-5 border-2 border-primary-500">
+                                <i data-lucide="sparkles" class="w-4 h-4 text-primary-600"></i>
+                                <span class="text-sm font-semibold text-primary-700">Devis Gratuit</span>
+                            </div>
+                            <h2 class="text-center text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-3">Obtenez votre devis</h2>
+                            <p class="text-center text-lg text-gray-600">Réponse sous 24h · Accompagnement personnalisé</p>
+                        </div>
+
+                        <div class="mb-10">
+                            <div class="flex justify-between text-sm font-medium text-gray-600 mb-3">
+                                <span id="step-label">Étape 1 sur 6</span>
+                                <span id="progress-percentage">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden shadow-inner">
+                                <div id="progress-bar" class="bg-gradient-to-r from-primary-500 to-primary-700 h-2.5 rounded-full transition-all duration-500 ease-out shadow-sm" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <form id="lead-form" class="space-y-6">
+                        <input type="hidden" name="csrf_token" id="csrf_token" value="">
+                        <div id="form-steps-container"></div>
+                    </form>
+
+                    <div id="form-success" class="hidden text-center space-y-6 py-8">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center animate-scale-in shadow-xl">
+                            <i data-lucide="check" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-display font-bold text-gray-900">Demande envoyée avec succès</h3>
+                        <p class="text-lg text-gray-600">Merci pour votre confiance. Un expert vous contactera sous <strong class="text-primary-700">24h ouvrées</strong>.</p>
+                    </div>
+
+                    <div class="mt-10 pt-8 border-t border-gray-100 flex items-center justify-center gap-8 text-sm text-gray-600">
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-primary-600"></i>
+                            <span>Données sécurisées</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="clock" class="w-5 h-5 text-primary-600"></i>
+                            <span>Réponse 24h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Section -->
+<section id="solutions" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-12 fade-in-on-scroll">
+            <h2 class="text-5xl font-display font-bold text-gray-900 mb-3">
+                Nos <span class="text-primary-600">Solutions</span> Premium
+            </h2>
+            <div class="inline-flex items-center w-20 h-1 bg-primary-600 mb-6"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Du kiosque compact à la laverie complète, nous avons la solution parfaite pour votre projet
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Kiosques -->
+            <div class="group bg-white rounded-2xl shadow-xl hover:shadow-luxury transition-all duration-500 overflow-hidden fade-in-on-scroll">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/laverie-automatique-ma-petite-laverie-exterior-compact.jpg" alt="Kiosque Laverie" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-3xl font-display font-bold">Kiosques</h3>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-600 mb-6">Compact et autonome, parfait pour les parkings et stations-service.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">Installation rapide (quelques jours)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">Faible emprise au sol</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">100% autonome et sécurisé</span>
+                        </li>
+                    </ul>
+                    <a href="#modal-carousel-kiosque" data-solution="kiosque" class="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold">                        <i data-lucide="images" class="w-5 h-5"></i>
+                        <span>Découvrir en image</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bungalows -->
+            <div class="group bg-white rounded-2xl shadow-xl hover:shadow-luxury transition-all duration-500 overflow-hidden fade-in-on-scroll" style="animation-delay: 0.1s;">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/laverie-automatique-modern-wood-exterior.jpg" alt="Bungalow Laverie" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-3xl font-display font-bold">Bungalows</h3>
+                    </div>
+                    <div class="absolute top-4 right-4">
+                        <span class="px-3 py-1 bg-accent-500 text-primary-900 text-sm font-bold rounded-full">
+                            🔥 Populaire
+                        </span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-600 mb-6">Solution complète et modulable, idéale pour campings et résidences.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">Capacité importante (10-15 machines)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">Structure modulable</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">ROI rapide</span>
+                        </li>
+                    </ul>
+                      <a href="#modal-video-bungalow" data-solution="bungalow" class="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold">                        <i data-lucide="play-circle" class="w-5 h-5"></i>
+                        <span>Découvrir en vidéo</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Locaux -->
+            <div class="group bg-white rounded-2xl shadow-xl hover:shadow-luxury transition-all duration-500 overflow-hidden fade-in-on-scroll" style="animation-delay: 0.2s;">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="./images/laverie-libre-service-interior-washers-dryers-complete.jpg" alt="Laverie en Local" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-3xl font-display font-bold">Locaux</h3>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-600 mb-6">Aménagement sur mesure pour locaux existants, flexible et évolutif.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">Configuration personnalisée</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">Évolutivité maximale</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span class="text-gray-700">Intégration architecturale</span>
+                        </li>
+                    </ul>
+                     <a href="#modal-carousel-locaux" data-solution="locaux" class="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold">                        <i data-lucide="images" class="w-5 h-5"></i>
+                        <span>Découvrir en image</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pourquoi Choisir Ma Petite Laverie -->
+<section id="pourquoi-choisir" class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <!-- Titre minimaliste -->
+        <div class="mb-20 fade-in-on-scroll">
+            <p class="text-sm uppercase tracking-wider text-primary-600 font-semibold mb-3">Expertise</p>
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Pourquoi <span class="text-primary-600">choisir<br>Ma Petite Laverie ?</span>
+            </h2>
+            <div class="w-20 h-1 bg-primary-600"></div>
+        </div>
+
+        <!-- Contenu Principal : Vidéo + Texte -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+            <!-- Colonne Gauche - Vidéo épurée -->
+            <div class="fade-in-on-scroll">
+                <div class="relative rounded-lg overflow-hidden shadow-xl bg-gray-900">
+                    <div class="aspect-video">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/H-EOXklBXtA"
+                            title="Ma Petite Laverie - Présentation"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            class="w-full h-full">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne Droite - Texte épuré -->
+            <div class="space-y-10 fade-in-on-scroll" style="animation-delay: 0.1s;">
+                <!-- Avantage 1 -->
+                <div class="border-l-2 border-primary-600 pl-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                        SAV d'Excellence
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Intervention sous 24h maximum avec techniciens certifiés. Hotline 7j/7, stock permanent de pièces détachées et maintenance préventive incluse.
+                    </p>
+                </div>
+
+                <!-- Avantage 2 -->
+                <div class="border-l-2 border-primary-600 pl-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                        Fabrication Française
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Qualité supérieure et respect des normes européennes. Nos machines sont conçues pour durer 15-20 ans, contre 8-10 ans pour l'import.
+                    </p>
+                </div>
+
+                <!-- Avantage 3 -->
+                <div class="border-l-2 border-primary-600 pl-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                        Conception Sur-Mesure
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Étude personnalisée adaptée à votre emplacement, votre budget et vos besoins spécifiques. Solutions 100% sur-mesure.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chiffres clés - Design minimaliste -->
+        <div class="grid md:grid-cols-3 gap-12 fade-in-on-scroll">
+            <!-- Chiffre 1 -->
+            <div class="text-center">
+                <div class="text-5xl font-bold text-primary-600 mb-3">30+</div>
+                <div class="text-sm uppercase tracking-wider text-gray-500 mb-2">Années</div>
+                <p class="text-gray-700">d'expertise reconnue</p>
+            </div>
+
+            <!-- Chiffre 2 -->
+            <div class="text-center border-x border-gray-200">
+                <div class="text-5xl font-bold text-primary-600 mb-3">50-70%</div>
+                <div class="text-sm uppercase tracking-wider text-gray-500 mb-2">Marges</div>
+                <p class="text-gray-700">après charges</p>
+            </div>
+
+            <!-- Chiffre 3 -->
+            <div class="text-center">
+                <div class="text-5xl font-bold text-primary-600 mb-3">100%</div>
+                <div class="text-sm uppercase tracking-wider text-gray-500 mb-2">Français</div>
+                <p class="text-gray-700">conception & fabrication</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================================================================ -->
+<!-- SECTION 5 ÉTAPES AVEC FRISE CHRONOLOGIQUE -->
+<!-- Remplace la section existante "Votre Projet en 5 Étapes" -->
+<!-- ================================================================ -->
+
+<!-- Processus Section avec Frise Chronologique -->
+<section id="processus" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16 fade-in-on-scroll">
+            <h2 class="text-5xl font-display font-bold text-gray-900 mb-3">
+                Votre projet en <span class="text-primary-600">5 Étapes</span>
+            </h2>
+            <div class="inline-flex items-center w-20 h-1 bg-primary-600 mb-6"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+                Un accompagnement personnalisé de A à Z pour la réussite de votre laverie
+            </p>
+            <div class="inline-flex items-center gap-3 px-6 py-3 bg-accent-500/10 rounded-full border-2 border-accent-500">
+                <i data-lucide="clock" class="w-5 h-5 text-accent-600"></i>
+                <span class="text-lg font-semibold text-gray-900">Durée totale : 4-6 semaines</span>
+            </div>
+        </div>
+
+        <!-- Frise Chronologique -->
+        <div class="relative max-w-6xl mx-auto">
+            <!-- Ligne horizontale de connexion (desktop) -->
+            <div class="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-accent-500 to-green-500"></div>
+
+            <!-- Étapes -->
+            <div class="grid lg:grid-cols-5 gap-8">
+                <!-- Étape 1 -->
+                <div class="relative fade-in-on-scroll">
+                    <div class="flex flex-col items-center text-center">
+                        <!-- Icône -->
+                        <div class="relative z-10 w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg mb-4 group hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="message-circle" class="w-10 h-10 text-white"></i>
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-accent-500 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                        </div>
+                        <!-- Contenu -->
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Premier Contact</h3>
+                        <p class="text-gray-600 text-sm mb-2">Échange sur votre projet</p>
+                        <span class="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-semibold">J1</span>
+                    </div>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="relative fade-in-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative z-10 w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg mb-4 group hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="map-pin" class="w-10 h-10 text-white"></i>
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-accent-500 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Visite Terrain</h3>
+                        <p class="text-gray-600 text-sm mb-2">Étude de votre emplacement</p>
+                        <span class="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-semibold">J3-5</span>
+                    </div>
+                </div>
+
+                <!-- Étape 3 -->
+                <div class="relative fade-in-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative z-10 w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-600 rounded-full flex items-center justify-center shadow-lg mb-4 group hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="file-text" class="w-10 h-10 text-primary-900"></i>
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Devis Détaillé</h3>
+                        <p class="text-gray-600 text-sm mb-2">Proposition personnalisée</p>
+                        <span class="inline-block px-3 py-1 bg-accent-100 text-accent-700 rounded-full text-xs font-semibold">J7-10</span>
+                    </div>
+                </div>
+
+                <!-- Étape 4 -->
+                <div class="relative fade-in-on-scroll" style="animation-delay: 0.3s;">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative z-10 w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg mb-4 group hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="hammer" class="w-10 h-10 text-white"></i>
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-accent-500 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Fabrication</h3>
+                        <p class="text-gray-600 text-sm mb-2">Production en France</p>
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">3-4 sem</span>
+                    </div>
+                </div>
+
+                <!-- Étape 5 -->
+                <div class="relative fade-in-on-scroll" style="animation-delay: 0.4s;">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative z-10 w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg mb-4 group hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="truck" class="w-10 h-10 text-white"></i>
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-accent-500 rounded-full flex items-center justify-center font-bold text-sm">5</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Livraison & Installation</h3>
+                        <p class="text-gray-600 text-sm mb-2">Mise en service complète</p>
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">J+30-42</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action Final -->
+            <div class="text-center mt-16 fade-in-on-scroll">
+                <div class="inline-flex flex-col items-center gap-4 p-8 bg-white rounded-2xl shadow-xl border-2 border-accent-500/20">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-8 h-8 text-green-500"></i>
+                        <p class="text-2xl font-bold text-gray-900">Votre laverie est prête !</p>
+                    </div>
+                    <p class="text-gray-600">Formation incluse + Accompagnement continu</p>
+                    <a href="#formulaire" class="px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-primary-900 rounded-xl hover:shadow-2xl transition-all font-bold flex items-center gap-2">
+                        <span>Démarrer mon projet</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Témoignages Section -->
+<section id="temoignages" class="py-20 bg-white">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-12 fade-in-on-scroll">
+            <h2 class="text-5xl font-display font-bold text-gray-900 mb-3">
+                Ils nous font <span class="text-primary-600">confiance</span>
+            </h2>
+            <div class="inline-flex items-center w-20 h-1 bg-primary-600 mb-6"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Découvrez les témoignages de nos clients satisfaits
+            </p>
+        </div>
+
+        <div class="swiper testimonialsSwiper max-w-6xl mx-auto">
+            <div class="swiper-wrapper pb-16">
+                <!-- Testimonial 1 -->
+                <div class="swiper-slide">
+                    <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-luxury p-8 lg:p-12 h-full">
+                        <div class="flex items-center gap-1 mb-6">
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-8 italic">
+                            "Un investissement rentable dès la première année. L'équipe Ma Petite Laverie nous a accompagnés à chaque étape avec professionnalisme. Le SAV est exceptionnel et les machines françaises sont d'une qualité remarquable."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white text-2xl font-bold">
+                                ML
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-900 text-lg">Marc L.</div>
+                                <div class="text-gray-600">Propriétaire - Camping 4★</div>
+                                <div class="text-sm text-primary-600 mt-1">📍 Vendée</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="swiper-slide">
+                    <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-luxury p-8 lg:p-12 h-full">
+                        <div class="flex items-center gap-1 mb-6">
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-8 italic">
+                            "Installation ultra rapide de notre kiosque. En 3 jours nous étions opérationnels ! Les clients apprécient la modernité et la fiabilité des équipements. Un vrai plus pour notre station-service."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white text-2xl font-bold">
+                                SD
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-900 text-lg">Sophie D.</div>
+                                <div class="text-gray-600">Gérante - Station Total</div>
+                                <div class="text-sm text-primary-600 mt-1">📍 Loire-Atlantique</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="swiper-slide">
+                    <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-luxury p-8 lg:p-12 h-full">
+                        <div class="flex items-center gap-1 mb-6">
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-8 italic">
+                            "Leur expertise terrain fait toute la différence. Ils nous ont conseillé sur l'emplacement optimal et le dimensionnement parfait. 2 ans après, notre laverie tourne à plein régime avec un ROI dépassé !"
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white text-2xl font-bold">
+                                JM
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-900 text-lg">Jean-Marc P.</div>
+                                <div class="text-gray-600">Investisseur Immobilier</div>
+                                <div class="text-sm text-primary-600 mt-1">📍 Nantes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="swiper-slide">
+                    <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-luxury p-8 lg:p-12 h-full">
+                        <div class="flex items-center gap-1 mb-6">
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-8 italic">
+                            "Le service après-vente est à la hauteur des promesses. Une panne un dimanche matin en pleine saison ? Intervention le lundi matin, problème réglé avant midi. C'est ça le professionnalisme !"
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white text-2xl font-bold">
+                                CB
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-900 text-lg">Catherine B.</div>
+                                <div class="text-gray-600">Propriétaire - Résidence de tourisme</div>
+                                <div class="text-sm text-primary-600 mt-1">📍 Morbihan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-12 fade-in-on-scroll">
+            <h2 class="text-5xl font-display font-bold text-gray-900 mb-3">
+                Questions <span class="text-primary-600">Fréquentes</span>
+            </h2>
+            <div class="inline-flex items-center w-20 h-1 bg-primary-600 mb-6"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Toutes les réponses à vos questions sur nos laveries automatiques
+            </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-4">
+            <!-- FAQ 1 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Quel est le budget nécessaire pour démarrer ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        Le budget démarre à partir de <strong>15 000€ pour un kiosque compact</strong> jusqu'à 50 000€+ pour une installation complète. Ce budget inclut les équipements, l'installation, la formation et la mise en service. Nous proposons également des solutions de financement adaptées à votre situation. Le ROI moyen se situe entre 3 et 5 ans selon l'emplacement.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Quel délai pour l'installation d'une laverie ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        Selon la solution choisie : <strong>3 à 5 jours pour un kiosque clé en main</strong>, 2 à 4 semaines pour un bungalow, et 4 à 8 semaines pour un local complet (selon travaux). Nous gérons toutes les démarches administratives et techniques. Le délai total depuis la signature inclut la fabrication (4-6 semaines), la livraison et l'installation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Quelle surface minimum est nécessaire ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        Un <strong>kiosque nécessite seulement 8-10m²</strong> (un emplacement de parking), un bungalow 20-30m², et un local complet à partir de 40m². Nous réalisons une étude personnalisée de votre emplacement pour optimiser l'agencement et maximiser le nombre de machines selon votre surface disponible. L'accès électrique et eau sont nécessaires.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Le SAV est-il vraiment garanti sous 24h ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        <strong>Oui, c'est notre engagement premium !</strong> Nous intervenons sous 24h maximum (souvent le jour même) avec nos techniciens certifiés. Hotline disponible 7j/7, stock de pièces détachées permanent, et maintenance préventive incluse. Nos 30 ans d'expérience et nos 15 laveries en propre nous permettent d'anticiper et résoudre rapidement tous les problèmes techniques.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Pourquoi choisir du matériel français ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        La fabrication française garantit <strong>qualité supérieure, disponibilité immédiate des pièces détachées, et respect des normes européennes strictes</strong>. Nos machines sont conçues pour durer 15-20 ans (vs 8-10 ans pour l'import). Support technique en français, réactivité maximale, et contribution à l'économie locale. Le léger surcoût initial est largement compensé par la fiabilité et la durabilité.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Quel chiffre d'affaires peut-on espérer ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        Le CA varie selon l'emplacement, mais nos clients réalisent en moyenne <strong>2 000€ à 5 000€/mois pour un kiosque</strong>, 5 000€ à 12 000€/mois pour un bungalow, et 10 000€ à 25 000€/mois pour un local complet. Marges : 50-70% après charges (eau, électricité, entretien). Nous réalisons une étude de rentabilité personnalisée avant signature pour valider le potentiel de votre emplacement.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Faut-il être présent sur place quotidiennement ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        <strong>Non, c'est tout l'intérêt d'une laverie automatique !</strong> Fonctionnement 100% autonome 24h/24 avec paiement sans contact et télésurveillance. Vous intervenez seulement 1 à 2 fois/semaine pour la collecte des recettes et l'entretien basique (selon volume). Système de monitoring en temps réel sur smartphone pour suivre l'activité et être alerté en cas d'anomalie. Idéal pour complément de revenus passifs.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Quelles sont les démarches administratives ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        <strong>Nous gérons l'essentiel des démarches !</strong> Vous devez : créer votre structure (auto-entrepreneur, SARL...), obtenir un bail ou autorisation d'occupation du sol, et souscrire une assurance professionnelle. Nous prenons en charge : déclaration URSSAF (activité automatique), conformité normes électriques et sanitaires, mise en service et formation. Accompagnement personnalisé de A à Z avec checklist complète fournie.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 9 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Les machines sont-elles économes en énergie ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        <strong>Absolument ! Nos machines sont certifiées A+++ en efficacité énergétique.</strong> Consommation d'eau réduite de 40% vs anciennes générations, programmes éco intelligents, récupération de chaleur sur les séchoirs. Coût moyen : 2-3€ d'eau/électricité par cycle. Possibilité d'installer des panneaux solaires pour encore plus d'économies. Rentabilité et écologie vont de pair avec Ma Petite Laverie.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ 10 -->
+            <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden fade-in-on-scroll">
+                <button class="faq-question w-full text-left px-8 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                    <span class="text-xl font-bold text-gray-900 pr-8">Proposez-vous une formation à l'exploitation ?</span>
+                    <svg class="w-6 h-6 text-primary-600 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer hidden px-8 pb-6">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        <strong>Oui, formation complète incluse dans votre investissement !</strong> Programme : utilisation machines, maintenance de 1er niveau, gestion incidents clients, optimisation tarifaire, comptabilité basique, marketing local. Durée : 1 journée sur site + support téléphonique illimité les 6 premiers mois. Documentation exhaustive fournie + accès à notre espace client avec tutos vidéo. Vous êtes opérationnel dès le jour 1 !
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12 fade-in-on-scroll">
+            <p class="text-gray-600 mb-6 text-lg">Vous avez d'autres questions ?</p>
+            <a href="tel:0240316600" onclick="trackEvent('phone_click_faq')" class="inline-flex items-center gap-3 px-8 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors font-bold text-lg shadow-xl hover:shadow-2xl">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                02 40 31 66 00
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold text-xl mb-4">Ma Petite Laverie</h3>
+                    <p class="text-gray-400 text-sm">Votre partenaire de confiance pour des solutions laverie 100% françaises depuis 30 ans.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Nous Visiter</h4>
+                    <p class="text-gray-400 text-sm">INNOPRESS<br>7 Rue de l'Industrie<br>44310 Saint Philbert de Grand Lieu</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <p class="text-gray-400 text-sm mb-2"><strong>☎️ 02 40 31 66 00</strong><br>Lun-Ven : 9h-13h et 14h-17h</p>
+                    <p class="text-gray-400 text-sm"><strong>✉️ direction@mapetitelaverie.fr</strong></p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Suivez-nous</h4>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/ma_petite_laverie/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ma-petite-laverie-innopress-102679282/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Ma Petite Laverie - Tous droits réservés | <a href="mentions-legales.html" class="hover:text-white">Mentions Légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+<!-- Modale Carrousel Kiosque -->
+<div id="modal-carousel-kiosque" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="relative bg-white rounded-2xl max-w-5xl w-full overflow-hidden shadow-2xl">
+        <!-- Bouton Fermer -->
+        <button onclick="closeCarouselKiosqueModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all shadow-lg">
+            <i data-lucide="x" class="w-6 h-6 text-gray-900"></i>
+        </button>
+
+        <!-- Carrousel Swiper -->
+        <div class="swiper carousel-kiosque-swiper">
+            <!-- Wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/kiosque-laverie-ma-petite-laverie-front.jpg"
+                         alt="Kiosque laverie Ma Petite Laverie"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Kiosque Ma Petite Laverie</h3>
+                        <p class="text-gray-200">Design signature, installation clé en main 100% française</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/kiosque-laverie-automatique-5-metres.png"
+                         alt="Kiosque laverie automatique 5 mètres"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Kiosque 5 Mètres</h3>
+                        <p class="text-gray-200">Format compact idéal pour parkings et stations-service</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/kiosque-laverie-speed-wash-exterieur.jpg"
+                         alt="Kiosque Speed Wash extérieur"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Kiosque Speed Wash</h3>
+                        <p class="text-gray-200">Solution haute performance pour zones à fort passage</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/kiosque-laverie-u-supermarche-exterieur.jpg"
+                         alt="Kiosque laverie supermarché"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Installation Commerciale</h3>
+                        <p class="text-gray-200">Intégration parfaite en zone de grande distribution</p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/laverie-automatique-ma-petite-laverie-illuminee.jpg"
+                         alt="Laverie automatique illuminée"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Service 24h/24</h3>
+                        <p class="text-gray-200">Éclairage LED performant pour utilisation jour et nuit</p>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/kiosque-laverie-compact-interieur.png"
+                         alt="Intérieur kiosque compact"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Intérieur Optimisé</h3>
+                        <p class="text-gray-200">Agencement ergonomique et espace maximisé</p>
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/laverie-automatique-bois-design-exterieur.jpg"
+                         alt="Laverie automatique design bois"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Design Premium Bois</h3>
+                        <p class="text-gray-200">Finition haut de gamme, esthétique et durable</p>
+                    </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="swiper-slide">
+                    <img src="./images/kiosques/laverie-oceanides-bord-de-mer-exterieur.jpg"
+                         alt="Laverie Océanides bord de mer"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Environnement Côtier</h3>
+                        <p class="text-gray-200">Résistance optimale aux conditions maritimes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modale Vidéo Bungalow -->
+<div id="modal-video-bungalow" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="relative bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl">
+        <button onclick="closeVideoModal('bungalow')" class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all shadow-lg">
+            <i data-lucide="x" class="w-6 h-6 text-gray-900"></i>
+        </button>
+        <div class="aspect-video">
+            <iframe
+                id="video-iframe-bungalow"
+                width="100%"
+                height="100%"
+                src=""
+                title="Bungalow Laverie"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<div id="modal-carousel-locaux" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="relative bg-white rounded-2xl max-w-5xl w-full overflow-hidden shadow-2xl">
+        <!-- Bouton Fermer -->
+        <button onclick="closeCarouselModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all shadow-lg">
+            <i data-lucide="x" class="w-6 h-6 text-gray-900"></i>
+        </button>
+
+        <!-- Carrousel Swiper -->
+        <div class="swiper carousel-locaux-swiper">
+            <!-- Wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-machines-laver-seche-linge-cote-a-cote.jpg"
+                         alt="Machines à laver et sèche-linge côte à côte"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Installation Complète</h3>
+                        <p class="text-gray-200">Machines à laver et sèche-linge professionnels en local</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-machines-laver-ecrans-tactiles.jpg"
+                         alt="Machines avec écrans tactiles"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Technologie Moderne</h3>
+                        <p class="text-gray-200">Écrans tactiles intuitifs pour une utilisation simplifiée</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-machines-aquastar-rangee-01.jpg"
+                         alt="Rangée de machines Aquastar"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Équipement Aquastar</h3>
+                        <p class="text-gray-200">Machines haute performance, économes et durables</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-plan-3d-amenagement-vue-perspective.png"
+                         alt="Plan 3D aménagement laverie"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Conception 3D Sur-Mesure</h3>
+                        <p class="text-gray-200">Étude personnalisée et optimisation de votre espace</p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-plan-3d-amenagement-local-40m2.png"
+                         alt="Plan 3D local 40m²"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Aménagement 40m²</h3>
+                        <p class="text-gray-200">Configuration optimale pour locaux moyens</p>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-plan-3d-amenagement-local-50m2.png"
+                         alt="Plan 3D local 50m²"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Aménagement 50m²</h3>
+                        <p class="text-gray-200">Solution grande capacité pour fort trafic</p>
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-espace-machines-seche-linge.jpg"
+                         alt="Espace machines et sèche-linge"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Espace Optimisé</h3>
+                        <p class="text-gray-200">Circulation fluide et confort utilisateur</p>
+                    </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="swiper-slide">
+                    <img src="./images/Laveries/laverie-automatique-interieur-machines-libre-service.jpg"
+                         alt="Intérieur laverie libre-service"
+                         class="w-full h-[600px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">Libre-Service Moderne</h3>
+                        <p class="text-gray-200">Aménagement lumineux et accueillant</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="index2.js"></script>
+</body>
+</html>

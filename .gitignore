@@ -1,0 +1,42 @@
+# Ma Petite Laverie - .gitignore
+
+# Logs et données sensibles
+logs/
+*.log
+*.json
+
+# Fichiers de configuration locaux
+config.local.php
+.env
+.env.local
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Sauvegardes
+*.bak
+*.backup
+backups/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+cache/
+temp/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Node modules (si vous ajoutez du build JS)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Composer (si vous utilisez des dépendances PHP)
+vendor/
+composer.lock
+archive/
