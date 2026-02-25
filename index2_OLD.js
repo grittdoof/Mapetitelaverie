@@ -655,19 +655,11 @@ async function submitForm(e) {
     }
 
     try {
-        const response = await fetch('/api/submit-form', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-    },
-    body: JSON.stringify(Object.fromEntries(formData))
-});
-/*         const response = await fetch('submit-form.php', {
+        const response = await fetch('submit-form.php', {
             method: 'POST',
             body: formData,
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
-        }); */
+        });
 
         const result = await response.json();
 

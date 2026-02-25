@@ -40,3 +40,5 @@ yarn.lock
 vendor/
 composer.lock
 archive/
+.vercel
+.env*.local
