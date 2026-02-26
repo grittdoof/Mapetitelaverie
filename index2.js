@@ -124,16 +124,21 @@ function initCookieBanner() {
 window.acceptCookies = function() {
     localStorage.setItem('cookie_consent', 'accepted');
     document.getElementById('cookie-banner').classList.add('hidden');
-    if (typeof gtag !== 'undefined') {
-        gtag('consent', 'update', { 'analytics_storage': 'granted' });
-    }
-    trackEvent('cookie_consent', {action: 'accepted'});
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ 'event': 'cookie_consent_accepted' });
 };
 
 window.refuseCookies = function() {
     localStorage.setItem('cookie_consent', 'refused');
     document.getElementById('cookie-banner').classList.add('hidden');
-    trackEvent('cookie_consent', {action: 'refused'});
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ 'event': 'cookie_consent_refused' });
+};
+
+// Expose pour permettre de rouvrir la bannière (ex: depuis le footer)
+window.reopenCookieBanner = function() {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('hidden');
 };
 
 // ============================================
@@ -674,8 +679,8 @@ async function submitForm(e) {
         if (result.success) {
             document.getElementById('lead-form').style.display = 'none';
             document.getElementById('form-success').classList.remove('hidden');
-            trackEvent('form_submission', { event_category: 'Lead', value: 1 });
-            trackEvent('conversion', { 'send_to': 'AW-CONVERSION_ID/LABEL' });
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({ 'event': 'form_submission' });
         } else {
             alert('Erreur. Réessayez ou contactez-nous au 02 40 31 66 00');
             submitBtn.disabled = false;
@@ -791,9 +796,8 @@ window.toggleFAQ = function(button) {
 // ============================================
 
 window.trackEvent = function(eventName, eventParams = {}) {
-    if (typeof gtag !== 'undefined') {
-        gtag('event', eventName, eventParams);
-    }
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push(Object.assign({ 'event': eventName }, eventParams));
     console.log('Event tracked:', eventName, eventParams);
 };
 

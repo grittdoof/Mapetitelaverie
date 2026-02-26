@@ -26,17 +26,13 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles2.css">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-        function trackEvent(eventName, eventParams = {}) {
-            gtag('event', eventName, eventParams);
-        }
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KZ268BVC');</script>
+    <!-- End Google Tag Manager -->
     
     <script>
         tailwind.config = {
@@ -57,12 +53,17 @@
 </head>
 <body class="font-sans antialiased bg-white">
 
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZ268BVC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 bg-white border-t-4 border-primary-500 shadow-2xl p-6 z-[9999]">
         <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex-1">
                 <h3 class="text-lg font-bold mb-2">🍪 Cookies</h3>
-                <p class="text-sm text-gray-700">Nous utilisons des cookies. <a href="mentions-legales.html" class="text-primary-500 underline">En savoir plus</a></p>
+                <p class="text-sm text-gray-700">Nous utilisons des cookies analytiques (Google Analytics, Hotjar) pour améliorer votre expérience. <a href="mentions-legales.html#cookies" class="text-primary-500 underline">En savoir plus</a></p>
             </div>
             <div class="flex gap-3">
                 <button onclick="acceptCookies()" class="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 font-semibold">Accepter</button>
@@ -177,7 +178,7 @@
                         <!-- Image 1 -->
                         <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
                             <img
-                                src="./images/carrousel/kiosque bord de mer.jpg"
+                                src="./images/carrousel/kiosque-bord-de-mer.jpg"
                                 alt="Kiosque laverie en bord de mer"
                                 class="w-full h-full object-cover rounded-2xl"
                             >
@@ -185,7 +186,7 @@
                         <!-- Image 2 -->
                         <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
                             <img
-                                src="./images/carrousel/kiosque super U.jpg"
+                                src="./images/carrousel/kiosque-super-u.jpg"
                                 alt="Kiosque laverie supermarché Super U"
                                 class="w-full h-full object-cover rounded-2xl"
                             >
@@ -193,7 +194,7 @@
                         <!-- Image 3 -->
                         <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
                             <img
-                                src="./images/carrousel/bungalow projection.jpg"
+                                src="./images/carrousel/bungalow-projection.jpg"
                                 alt="Bungalow laverie vue en projection"
                                 class="w-full h-full object-cover rounded-2xl"
                             >
@@ -201,7 +202,7 @@
                         <!-- Image 4 -->
                         <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
                             <img
-                                src="./images/carrousel/bungalow xxl.jpg"
+                                src="./images/carrousel/bungalow-xxl.jpg"
                                 alt="Bungalow laverie modèle XXL"
                                 class="w-full h-full object-cover rounded-2xl"
                             >
@@ -209,7 +210,7 @@
                         <!-- Image 5 -->
                         <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
                             <img
-                                src="./images/carrousel/croquis kiosque.jpg"
+                                src="./images/carrousel/croquis-kiosque.jpg"
                                 alt="Croquis technique kiosque laverie"
                                 class="w-full h-full object-cover rounded-2xl"
                             >
@@ -217,7 +218,7 @@
                         <!-- Image 6 -->
                         <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
                             <img
-                                src="./images/carrousel/implantation kiosque.jpg"
+                                src="./images/carrousel/implantation-kiosque.jpg"
                                 alt="Plan d'implantation kiosque laverie"
                                 class="w-full h-full object-cover rounded-2xl"
                             >
@@ -1084,7 +1085,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; 2025 Ma Petite Laverie - Tous droits réservés | <a href="mentions-legales.html" class="hover:text-white">Mentions Légales</a></p>
+                <p>&copy; 2026 Ma Petite Laverie - Tous droits réservés | <a href="mentions-legales.html" class="hover:text-white">Mentions Légales</a> | <a href="mentions-legales.html#cookies" class="hover:text-white">Gestion des cookies</a></p>
             </div>
         </div>
     </footer>
