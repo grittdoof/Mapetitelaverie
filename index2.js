@@ -455,7 +455,7 @@ function renderFormSteps() {
                     <input type="text" name="prenom" required minlength="2" placeholder="Prénom" class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400">
                     <input type="text" name="nom" required minlength="2" placeholder="Nom" class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400">
                 </div>
-                <input type="tel" name="telephone" required pattern="^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$" placeholder="Téléphone" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400">
+                <input type="tel" name="telephone" required pattern="^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s\\.\\-]*\\d{2}){4}$" placeholder="Téléphone" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400">
                 <input type="email" name="email" required placeholder="Email" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400">
                 <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
                     <label class="flex items-start cursor-pointer">
