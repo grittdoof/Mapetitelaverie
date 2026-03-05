@@ -8,7 +8,7 @@ console.log('🚀 Chargement de Ma Petite Laverie...');
 // ============================================
 
 let currentStep = 1;
-const totalSteps = 6;
+const totalSteps = 7;
 
 // ============================================
 // INITIALIZATION
@@ -192,7 +192,7 @@ function initRadioAutoAdvance() {
         });
     });
 
-    // Pour le select de l'étape 5 (surface)
+    // Pour le select de l'étape 6 (surface)
     const surfaceSelect = document.querySelector('select[name="surface"]');
     if (surfaceSelect) {
         surfaceSelect.addEventListener('change', function() {
@@ -215,12 +215,17 @@ function validateCurrentStep() {
             isValid = !!typeProjet;
             break;
 
-        case 2: // Budget
+        case 2: // Type de besoin
+            const typeBesoin = document.querySelector('input[name="type_besoin"]:checked');
+            isValid = !!typeBesoin;
+            break;
+
+        case 3: // Budget
             const budget = document.querySelector('input[name="budget"]:checked');
             isValid = !!budget;
             break;
 
-        case 3: // Emplacement
+        case 4: // Emplacement
             const emplacement = document.querySelector('input[name="emplacement_disponible"]:checked');
             isValid = !!emplacement;
             // Si "Oui" est sélectionné, vérifier que les champs sont remplis
@@ -232,17 +237,17 @@ function validateCurrentStep() {
             }
             break;
 
-        case 4: // Timing
+        case 5: // Timing
             const timing = document.querySelector('input[name="timing"]:checked');
             isValid = !!timing;
             break;
 
-        case 5: // Surface
+        case 6: // Surface
             const surface = document.querySelector('select[name="surface"]');
             isValid = surface && surface.value !== '';
             break;
 
-        case 6: // Contact
+        case 7: // Contact
             const prenom = document.querySelector('input[name="prenom"]');
             const nom = document.querySelector('input[name="nom"]');
             const telephone = document.querySelector('input[name="telephone"]');
@@ -315,6 +320,41 @@ function renderFormSteps() {
 
         <!-- Step 2 -->
         <div class="form-step" data-step="2">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Votre besoin concerne :</h3>
+            <div class="space-y-3">
+                <label class="flex items-start p-4 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-accent-500 cursor-pointer transition-all group">
+                    <input type="radio" name="type_besoin" value="kiosque_laverie" required class="mt-1 mr-4 w-5 h-5">
+                    <div>
+                        <div class="font-semibold text-gray-900">Un kiosque laverie</div>
+                    </div>
+                </label>
+                <label class="flex items-start p-4 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-accent-500 cursor-pointer transition-all group">
+                    <input type="radio" name="type_besoin" value="bungalow_laverie" required class="mt-1 mr-4 w-5 h-5">
+                    <div>
+                        <div class="font-semibold text-gray-900">Un bungalow laverie</div>
+                    </div>
+                </label>
+                <label class="flex items-start p-4 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-accent-500 cursor-pointer transition-all group">
+                    <input type="radio" name="type_besoin" value="amenagement_locaux" required class="mt-1 mr-4 w-5 h-5">
+                    <div>
+                        <div class="font-semibold text-gray-900">Aménagement de locaux</div>
+                    </div>
+                </label>
+            </div>
+            <div class="mt-6 flex gap-3">
+                <button type="button" onclick="prevStep()" class="flex-1 px-6 py-4 bg-gray-50 text-gray-900 rounded-xl hover:bg-gray-100 transition-all font-semibold flex items-center justify-center gap-2">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    <span>Retour</span>
+                </button>
+                <button type="button" onclick="nextStep()" class="flex-1 px-6 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-primary-900 rounded-xl hover:shadow-2xl transition-all font-bold flex items-center justify-center gap-2">
+                    <span>Continuer</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" data-step="3">
             <h3 class="text-xl font-bold text-gray-900 mb-4">Budget envisagé</h3>
             <div class="space-y-3">
                 <label class="flex items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-accent-500 cursor-pointer transition-all">
@@ -342,8 +382,8 @@ function renderFormSteps() {
             </div>
         </div>
 
-        <!-- Step 3 -->
-        <div class="form-step" data-step="3">
+        <!-- Step 4 -->
+        <div class="form-step" data-step="4">
             <h3 class="text-xl font-bold text-gray-900 mb-4">Emplacement ?</h3>
             <div class="space-y-3">
                 <label class="flex items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-accent-500 cursor-pointer transition-all">
@@ -387,8 +427,8 @@ function renderFormSteps() {
             </div>
         </div>
 
-        <!-- Step 4 -->
-        <div class="form-step" data-step="4">
+        <!-- Step 5 -->
+        <div class="form-step" data-step="5">
             <h3 class="text-xl font-bold text-gray-900 mb-4">Timing</h3>
             <div class="space-y-3">
                 <label class="flex items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-accent-500 cursor-pointer transition-all">
@@ -425,8 +465,8 @@ function renderFormSteps() {
             </div>
         </div>
 
-        <!-- Step 5 -->
-        <div class="form-step" data-step="5">
+        <!-- Step 6 -->
+        <div class="form-step" data-step="6">
             <h3 class="text-xl font-bold text-gray-900 mb-4">Surface</h3>
             <select name="surface" required class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-lg">
                 <option value="">Sélectionnez...</option>
@@ -447,8 +487,8 @@ function renderFormSteps() {
             </div>
         </div>
 
-        <!-- Step 6 -->
-        <div class="form-step" data-step="6">
+        <!-- Step 7 -->
+        <div class="form-step" data-step="7">
             <h3 class="text-xl font-bold text-gray-900 mb-4">Coordonnées</h3>
             <div class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">

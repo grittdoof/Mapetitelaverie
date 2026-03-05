@@ -183,6 +183,11 @@ async function sendEmail(formData) {
             </div>
 
             <div class='field'>
+                <span class='label'>Besoin concerné</span>
+                <span class='value'>${{'kiosque_laverie': 'Un kiosque laverie', 'bungalow_laverie': 'Un bungalow laverie', 'amenagement_locaux': 'Aménagement de locaux'}[formData.type_besoin] || formData.type_besoin}</span>
+            </div>
+
+            <div class='field'>
                 <span class='label'>Budget envisagé</span>
                 <span class='value'><span class='badge'>${formData.budget.toUpperCase()}</span></span>
             </div>
@@ -267,12 +272,14 @@ async function sendPushoverNotification(formData) {
     return true;
   }
 
+  const besoinLabels = {'kiosque_laverie': 'Un kiosque laverie', 'bungalow_laverie': 'Un bungalow laverie', 'amenagement_locaux': 'Aménagement de locaux'};
   const message = `🎯 Nouvelle demande de devis\n\n` +
     `👤 ${formData.prenom} ${formData.nom}\n` +
     `📞 ${formData.telephone}\n` +
     `📧 ${formData.email}\n\n` +
     `📋 PROJET\n` +
     `• Type: ${formData.type_projet.replace(/_/g, ' ')}\n` +
+    `• Besoin: ${besoinLabels[formData.type_besoin] || formData.type_besoin}\n` +
     `• Budget: ${formData.budget.toUpperCase()}\n` +
     `• Timing: ${formData.timing.replace(/_/g, ' ')}\n` +
     `• Surface: ${formData.surface}\n\n` +
@@ -443,6 +450,7 @@ export default async function handler(req, res) {
     // Sanitize input data
     const formData = {
       type_projet: sanitizeInput(req.body.type_projet || ''),
+      type_besoin: sanitizeInput(req.body.type_besoin || ''),
       budget: sanitizeInput(req.body.budget || ''),
       emplacement_disponible: sanitizeInput(req.body.emplacement_disponible || ''),
       type_emplacement: sanitizeInput(req.body.type_emplacement || ''),
@@ -458,7 +466,7 @@ export default async function handler(req, res) {
     };
 
     // Validate required fields
-    const requiredFields = ['type_projet', 'budget', 'emplacement_disponible', 'timing', 'surface', 'prenom', 'nom', 'telephone', 'email'];
+    const requiredFields = ['type_projet', 'type_besoin', 'budget', 'emplacement_disponible', 'timing', 'surface', 'prenom', 'nom', 'telephone', 'email'];
     for (const field of requiredFields) {
       if (!formData[field]) {
         return res.status(400).json({
