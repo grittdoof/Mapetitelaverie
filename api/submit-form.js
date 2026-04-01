@@ -255,16 +255,17 @@ async function sendEmail(formData) {
 </html>`;
 
   try {
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `"${CONFIG.smtpFromName}" <${CONFIG.smtpFromEmail}>`,
       to: CONFIG.emailTo.join(', '),
       replyTo: `"${formData.prenom} ${formData.nom}" <${formData.email}>`,
       subject: 'Nouvelle demande de devis - Ma Petite Laverie',
       html: emailBody,
     });
+    console.log(`[EMAIL ADMIN] Envoyé → destinataire: ${CONFIG.emailTo.join(', ')} | messageId: ${info.messageId} | response: ${info.response}`);
     return true;
   } catch (error) {
-    console.error('Email sending failed:', error);
+    console.error(`[EMAIL ADMIN] ECHEC → destinataire: ${CONFIG.emailTo.join(', ')} | erreur: ${error.message} | code: ${error.code} | response: ${error.response}`);
     return false;
   }
 }
@@ -396,15 +397,16 @@ async function sendConfirmationEmail(formData) {
 </html>`;
 
   try {
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `"${CONFIG.smtpFromName}" <${CONFIG.smtpFromEmail}>`,
       to: `"${formData.prenom} ${formData.nom}" <${formData.email}>`,
       subject: 'Demande de devis bien reçue - Ma Petite Laverie',
       html: confirmationBody,
     });
+    console.log(`[EMAIL CONFIRMATION] Envoyé → destinataire: ${formData.email} | messageId: ${info.messageId} | response: ${info.response}`);
     return true;
   } catch (error) {
-    console.error('Confirmation email failed:', error);
+    console.error(`[EMAIL CONFIRMATION] ECHEC → destinataire: ${formData.email} | erreur: ${error.message} | code: ${error.code} | response: ${error.response}`);
     return false;
   }
 }
