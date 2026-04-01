@@ -253,8 +253,10 @@ function validateCurrentStep() {
             const telephone = document.querySelector('input[name="telephone"]');
             const email = document.querySelector('input[name="email"]');
             const rgpd = document.querySelector('input[name="rgpd_consent"]');
+            const typeClient = document.querySelector('input[name="type_client"]:checked');
 
-            isValid = prenom && prenom.value.trim().length >= 2 &&
+            isValid = typeClient &&
+                     prenom && prenom.value.trim().length >= 2 &&
                      nom && nom.value.trim().length >= 2 &&
                      telephone && telephone.value.trim() !== '' &&
                      email && email.value.trim() !== '' &&
@@ -491,6 +493,19 @@ function renderFormSteps() {
         <div class="form-step" data-step="7">
             <h3 class="text-xl font-bold text-gray-900 mb-4">Coordonnées</h3>
             <div class="space-y-4">
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                    <p class="text-sm font-semibold text-gray-700 mb-3">Vous êtes :</p>
+                    <div class="flex gap-6">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="type_client" value="particulier" required class="mr-2 w-5 h-5 accent-blue-600">
+                            <span class="text-gray-800 font-medium">Particulier</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="type_client" value="professionnel" required class="mr-2 w-5 h-5 accent-blue-600">
+                            <span class="text-gray-800 font-medium">Professionnel</span>
+                        </label>
+                    </div>
+                </div>
                 <div class="grid grid-cols-2 gap-4">
                     <input type="text" name="prenom" required minlength="2" placeholder="Prénom" class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400">
                     <input type="text" name="nom" required minlength="2" placeholder="Nom" class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400">

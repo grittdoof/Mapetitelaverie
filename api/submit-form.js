@@ -222,6 +222,11 @@ async function sendEmail(formData) {
             <h2>👤 Coordonnées du Contact</h2>
 
             <div class='field'>
+                <span class='label'>Type de contact</span>
+                <span class='value'>${formData.type_client === 'professionnel' ? '🏢 Professionnel' : '👤 Particulier'}</span>
+            </div>
+
+            <div class='field'>
                 <span class='label'>Nom complet</span>
                 <span class='value'>${formData.prenom} ${formData.nom}</span>
             </div>
@@ -274,6 +279,7 @@ async function sendPushoverNotification(formData) {
 
   const besoinLabels = {'kiosque_laverie': 'Un kiosque laverie', 'bungalow_laverie': 'Un bungalow laverie', 'amenagement_locaux': 'Aménagement de locaux'};
   const message = `🎯 Nouvelle demande de devis\n\n` +
+    `${formData.type_client === 'professionnel' ? '🏢 Professionnel' : '👤 Particulier'}\n` +
     `👤 ${formData.prenom} ${formData.nom}\n` +
     `📞 ${formData.telephone}\n` +
     `📧 ${formData.email}\n\n` +
@@ -457,6 +463,7 @@ export default async function handler(req, res) {
       ville_emplacement: sanitizeInput(req.body.ville_emplacement || ''),
       timing: sanitizeInput(req.body.timing || ''),
       surface: sanitizeInput(req.body.surface || ''),
+      type_client: sanitizeInput(req.body.type_client || ''),
       prenom: sanitizeInput(req.body.prenom || ''),
       nom: sanitizeInput(req.body.nom || ''),
       telephone: sanitizeInput(req.body.telephone || ''),
@@ -466,7 +473,7 @@ export default async function handler(req, res) {
     };
 
     // Validate required fields
-    const requiredFields = ['type_projet', 'type_besoin', 'budget', 'emplacement_disponible', 'timing', 'surface', 'prenom', 'nom', 'telephone', 'email'];
+    const requiredFields = ['type_projet', 'type_besoin', 'budget', 'emplacement_disponible', 'timing', 'surface', 'type_client', 'prenom', 'nom', 'telephone', 'email'];
     for (const field of requiredFields) {
       if (!formData[field]) {
         return res.status(400).json({
