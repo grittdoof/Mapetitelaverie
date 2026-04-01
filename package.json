@@ -1,0 +1,20 @@
+{
+  "name": "ma-petite-laverie",
+  "version": "1.0.0",
+  "description": "Ma Petite Laverie - Landing page et formulaire de contact",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.2.0",
+    "html-entities": "^2.4.0",
+    "nodemailer": "^8.0.1",
+    "vercel": "^50.17.1"
+  },
+"scripts": {
+  "dev": "npx serve .",
+  "deploy": "vercel --prod"
+}
+}

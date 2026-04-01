@@ -3,7 +3,11 @@
 # Logs et données sensibles
 logs/
 *.log
+
+# Fichiers JSON génériques (les configs critiques sont explicitement incluses)
 *.json
+!package.json
+!vercel.json
 
 # Fichiers de configuration locaux
 config.local.php
